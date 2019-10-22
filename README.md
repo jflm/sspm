@@ -34,6 +34,14 @@ clipboard and the latter is for setting it and storing in Keychain
 
 Happy days.
 
+## Running tests
+
+There is (now) a very rudimentary test runner to help avoid regressions for issues that have been fixed. To run all the tests, just run `./test.sh`.
+
+You can also run an individual test file with `tests/<test_name>.sh`.
+
+For simplicity's sake, because we are using Bash for everything and it's mental, tests should all be run when your cwd is the top level 'sspm' directory.
+
 ## Limitations
 
 The key limitation with this tool is in the 'set password' functionality. The tool makes use of the MacOS `security` utility, which takes the

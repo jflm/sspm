@@ -1,5 +1,13 @@
-# set -e
+set -e
 
+# tests using the test_helpers should be run from the top-level directory, usually named 'sspm'
+current_dir=${PWD##*/}
+if [[ "$current_dir" -ne "sspm" ]]; then
+    echo "Tests should be run from the top-level 'sspm' directory"
+    exit 1
+fi
+
+# assert function useful for some basic assertions of the form `assert "string" = "string"`
 assert() {
     if [ "$@" ]; then
         echo > /dev/null
@@ -7,4 +15,11 @@ assert() {
         echo "Test failed: -> $@ <- was false."
         exit 1
     fi
+}
+
+# utility function for editing a text file and executing it as a bash script
+# (because get-password and set-password are not executable, they are templates)
+# takes the form `copy_and_exec ./file-name search_for replace_with`
+copy_and_exec() {
+    eval $(sed "s/$2/$3/" "$1" | grep -v bash)
 }
