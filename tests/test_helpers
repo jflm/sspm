@@ -1,0 +1,10 @@
+# set -e
+
+assert() {
+    if [ "$@" ]; then
+        echo > /dev/null
+    else
+        echo "Test failed: -> $@ <- was false."
+        exit 1
+    fi
+}
