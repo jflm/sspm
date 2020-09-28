@@ -1,5 +1,3 @@
-set -e
-
 # tests using the test_helpers should be run from the top-level directory, usually named 'sspm'
 current_dir=${PWD##*/}
 if [[ "$current_dir" -ne "sspm" ]]; then

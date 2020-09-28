@@ -2,8 +2,6 @@
 
 set -e
 
-test_files=$(ls tests | grep -v helper)
-
-for test_file in "$test_files"; do
-    bash "tests/$test_file"
+for test_file in ./tests/*; do
+    bash "$test_file"
 done
